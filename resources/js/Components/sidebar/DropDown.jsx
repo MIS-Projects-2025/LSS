@@ -34,12 +34,12 @@ export default function Dropdown({
 
     const hoverColor =
         localStorage.getItem("theme") === "dark"
-            ? "hover:bg-gray-800"
+            ? "hover:bg-gray-100"
             : "hover:bg-gray-100";
 
     const activeColor =
         localStorage.getItem("theme") === "dark"
-            ? "bg-gray-700"
+            ? "bg-gray-200"
             : "bg-gray-200";
 
     return (

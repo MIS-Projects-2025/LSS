@@ -56,10 +56,10 @@ export default function Sidebar() {
                     md:translate-x-0
                     md:flex
                     flex-col min-h-screen w-[270px] space-y-6 px-4 pb-6 pt-4
-                    ${
+                     ${
                         theme === "light"
-                            ? "bg-gray-50 text-black"
-                            : "bg-base-100 text-base-content"
+                            ? "bg-yellow-400 text-black"
+                            : "bg-yellow-400 text-black"
                     }
                 `}
                 style={{
@@ -72,25 +72,15 @@ export default function Sidebar() {
                     href={route("dashboard")}
                     className="flex items-center pl-[10px] text-lg font-bold"
                 >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth="1.5"
-                        stroke="currentColor"
-                        className="w-5 h-5"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z"
-                        />
-                    </svg>
+                    <i className="fa-solid fa-sheet-plastic"></i>
                     <p className="pt-[2px] pl-1">{formattedAppName}</p>
                 </Link>
 
                 <Navigation />
-
+                    <div className="text-center mt-2">
+                    <p className="text-black">Copyright © {new Date().getFullYear()}</p>
+                    <small className="text-gray-700">Created by: <b>Dharwines</b></small>
+                    </div>
                 <ThemeToggler toggleTheme={toggleTheme} theme={theme} />
             </div>
         </div>

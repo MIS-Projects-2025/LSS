@@ -194,7 +194,7 @@ export default function DataTable({
                     }}
                     className="select select-sm w-[100px] py-0"
                 >
-                    {[10, 25, 50, 100].map((num) => (
+                    {[10, 25, 50, 100, 1000, 5000, 10000, 50000].map((num) => (
                         <option key={num} value={num}>
                             Show {num}
                         </option>

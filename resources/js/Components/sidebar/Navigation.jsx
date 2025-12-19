@@ -12,87 +12,56 @@ export default function NavLinks() {
             <SidebarLink
                 href={route("dashboard")}
                 label="Dashboard"
-                icon={
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth="1.5"
-                        stroke="currentColor"
-                        className="w-5 h-5"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z"
-                        />
-                    </svg>
-                }
-                notifications={5}
+                icon={<i className="fa-solid fa-gauge-simple-high"></i>}
             />
 
+            {!["superadmin", "admin"].includes(emp_data?.emp_system_role) && (
             <Dropdown
-                label="Dropdown"
-                icon={
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth="1.5"
-                        stroke="currentColor"
-                        className="w-5 h-5"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z"
-                        />
-                    </svg>
-                }
+                label="Logsheet"
+                icon={<i className="fa-solid fa-file-circle-check"></i>}
                 links={[
                     {
-                        href: route("admin"),
-                        label: "Profile",
-                        notification: true,
-                    },
-                    {
-                        href: route("admin"),
-                        label: "Account",
-                        notification: 125,
-                    },
-                    {
-                        href: route("dashboard"),
-                        label: "No notifications",
-                        notification: false,
+                        href: route("inspection.logsheet.index"),
+                        icon: <i className="fa-regular fa-rectangle-list"></i>,
+                        label: "Inspection Logsheet",
                     },
                 ]}
-                notification={true}
             />
-
+            )}
             {["superadmin", "admin"].includes(emp_data?.emp_system_role) && (
                 <div>
+                     <SidebarLink
+                        href={route("inspection.logsheet.list")}
+                        label="Inspection Logsheet"
+                        icon={<i className="fa-solid fa-file-circle-check"></i>}
+                    />
+
                     <SidebarLink
                         href={route("admin")}
                         label="Administrators"
-                        icon={
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth="1.5"
-                                stroke="currentColor"
-                                className="w-5 h-5"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z"
-                                />
-                            </svg>
-                        }
-                        // notifications={5}
+                        icon={<i className="fa-solid fa-users-gear"></i>}
                     />
+
+
+            <Dropdown
+                label="Maintenance"
+                icon={<i className="fa-solid fa-screwdriver-wrench"></i>}
+                links={[
+                    {
+                        href: route("stamp.index"),
+                        icon: <i className="fa-solid fa-stamp"></i>,
+                        label: "QA Stamp List",
+                    },
+                    {
+                        href: route("package-type.index"),
+                        icon: <i className="fas fa-microchip"></i>,
+                        label: "Package List",
+                    },
+                ]}
+            />
                 </div>
+
+                
             )}
         </nav>
     );

@@ -62,6 +62,26 @@ return [
             ]) : [],
         ],
 
+        'server25' => [
+            'driver' => 'mysql',
+            'url' => env('SDB_URL'),
+            'host' => env('SDB_HOST', '127.0.0.1'),
+            'port' => env('SDB_PORT', '3306'),
+            'database' => env('SDB_DATABASE', 'laravel'),
+            'username' => env('SDB_USERNAME', 'root'),
+            'password' => env('SDB_PASSWORD', ''),
+            'unix_socket' => env('SDB_SOCKET', ''),
+            'charset' => env('SDB_CHARSET', 'utf8mb4'),
+            'collation' => env('SDB_COLLATION', 'utf8mb4_unicode_ci'),
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+
         'masterlist' => [
             'driver' => 'mysql',
             'url' => env('ADB_URL'),

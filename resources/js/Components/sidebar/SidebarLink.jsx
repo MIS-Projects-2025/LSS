@@ -14,7 +14,7 @@ const SidebarLink = ({
 
     const themeColor =
         localStorage.getItem("theme") === "dark"
-            ? "bg-gray-700"
+            ? "bg-gray-200"
             : "bg-gray-200";
 
     const activeColor = isActive ? themeColor : "";

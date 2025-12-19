@@ -27,7 +27,14 @@ class AdminController extends Controller
             'mysql',
             'admin',
             [
-                'searchColumns' => ['EMPNAME', 'EMPLOYID', 'JOB_TITLE', 'DEPARTMENT'],
+
+                'conditions' => function ($query) {
+                    return $query
+                        ->whereNot('emp_role', 'superadmin')
+                        ->OrderBy('emp_role', 'ASC');
+                },
+
+                'searchColumns' => ['emp_id', 'emp_name', 'emp_role'],
             ]
         );
 
@@ -53,20 +60,26 @@ class AdminController extends Controller
 
     public function index_addAdmin(Request $request)
     {
+        $adminEmpIDs = DB::connection('mysql')->table('admin')->pluck('emp_id')->toArray();
+
         $result = $this->datatable->handle(
             $request,
-            'masterlist',
+            'masterlist', // connection for employee_masterlist
             'employee_masterlist',
             [
-                'conditions' => function ($query) {
+                'conditions' => function ($query) use ($adminEmpIDs) {
                     return $query
                         ->where('ACCSTATUS', 1)
-                        ->whereNot('EMPLOYID', 0);
+                        ->where('EMPLOYID', '!=', 0)
+                        ->where('DEPARTMENT', 'Quality Assurance')
+                        ->whereNotIn('EMPLOYID', $adminEmpIDs)
+                        ->OrderBy('EMPLOYID', 'DESC');
                 },
 
                 'searchColumns' => ['EMPNAME', 'EMPLOYID', 'JOB_TITLE', 'DEPARTMENT'],
             ]
         );
+
 
         // FOR CSV EXPORTING
         if ($result instanceof \Symfony\Component\HttpFoundation\StreamedResponse) {

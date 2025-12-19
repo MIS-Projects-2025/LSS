@@ -1,6 +1,5 @@
-CREATE DATABASE test_db;
 
-USE test_db;
+USE inspect_logsheet_db;
 
 DROP TABLE IF EXISTS admin;
 CREATE TABLE admin (
